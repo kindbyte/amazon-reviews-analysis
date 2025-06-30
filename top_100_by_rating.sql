@@ -1,6 +1,10 @@
-select productId, count(*) as total_reviews,
-round(avg(rating), 2) as avg_rating
-from amazon_ratings
-group by productId
-having count(*) >= 30
-order by avg_rating DESC limit 100;
+SELECT 
+ productId,
+ COUNT(*) AS total_reviews,
+ COUNT(DISTINCT userid) AS unique_users,
+ ROUND(AVG(rating), 2) AS avg_rating
+FROM amazon_ratings
+GROUP BY productId
+HAVING COUNT(*) >= 30 AND COUNT(DISTINCT userid) >= 25
+ORDER BY avg_rating DESC
+LIMIT 100;
