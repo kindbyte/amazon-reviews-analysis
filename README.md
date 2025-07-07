@@ -1,2 +1,0 @@
-# amazon-reviews-analysis
-
